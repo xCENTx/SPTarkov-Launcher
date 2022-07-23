@@ -52,7 +52,7 @@ namespace SPTarkov {
 	bool Process::Execute()
 	{
 		int dwSize = sizeof(PATHS) / sizeof(PATHS[0]);
-		for (int i = 0; i < sizeof(PATHS); i++)
+		for (int i = 0; i < dwSize; i++)
 		{
 			AllocZeroMem(pINFO, sINFO);
 			if (!CreateProcess(PATHS[i], NULL, NULL, NULL, FALSE, NULL, NULL, NULL, &sINFO, &pINFO)) {
