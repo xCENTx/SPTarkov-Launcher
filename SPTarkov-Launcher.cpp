@@ -2,23 +2,17 @@
 
 int main()
 {
-	///	LAUNCH SERVER CONFIG CLIENT (if requested)
-			//	CLOSE HANDLE FOR AKI-SERVER-CONFIG CLIENT
-
-	///	LAUNCH AKI-SERVER CLIENT
-	AllocZeroMem(pINFO, sINFO);
-	CreateProcess(SERVER_PATH, NULL, NULL, NULL, FALSE, NULL, NULL, NULL, &sINFO, &pINFO);
-
-	///	CHECK PROCESS RUNNING
-	ProcessRunning(pINFO, sINFO, dwExit);
-
-	///	SLEEP	(IDEALLY WE WOULD WANT TO CHECK IF THE SERVER IS ACTUALLY PRESENT)
-	Sleep(7000);
-
-	///	LAUNCH AKI-LAUNCHER
-	AllocZeroMem(pINFO, sINFO);
-	CreateProcess(LAUNCHER_PATH, NULL, NULL, NULL, FALSE, NULL, NULL, NULL, &sINFO, &pINFO);
-	ProcessRunning(pINFO, sINFO, dwExit);
+	int dwSize = sizeof(QUICK_PATHS) / sizeof(QUICK_PATHS[0]);
+	for (int i = 0; i < sizeof(QUICK_PATHS); i++)
+	{
+		AllocZeroMem(pINFO, sINFO);
+		if (!CreateProcess(QUICK_PATHS[i], NULL, NULL, NULL, FALSE, NULL, NULL, NULL, &sINFO, &pINFO)) {
+			ClearZeroMem(pINFO, sINFO);
+			MessageBoxA(NULL, "LAUNCH PROCEDURE FAILED\n\nEXITING . . .", "LAUNCH ERROR", MB_ICONERROR);
+			return EXIT_FAILURE;
+		}
+		ProcessRunning(pINFO, sINFO, dwExit);
+	}
 
 	///	EXIT
 	return EXIT_SUCCESS;

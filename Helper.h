@@ -1,8 +1,10 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
+#include "atlstr.h"
 
 ///	OBTAIN PATH
+LPCWSTR QUICK_PATHS[2]{ L"Aki.Server.exe", L"Aki.Launcher.exe" };
 LPCWSTR SERVER_PATH = L"Aki.Server.exe";
 LPCWSTR LAUNCHER_PATH = L"Aki.Launcher.exe";
 LPCWSTR GAME_PATH = L"EscapeFromTarkov.exe";
