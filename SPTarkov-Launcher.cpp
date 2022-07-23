@@ -13,16 +13,11 @@ int main()
 	ProcessRunning(pINFO, sINFO, dwExit);
 
 	///	SLEEP	(IDEALLY WE WOULD WANT TO CHECK IF THE SERVER IS ACTUALLY PRESENT)
-	Sleep(10000);
+	Sleep(7000);
 
 	///	LAUNCH AKI-LAUNCHER
 	AllocZeroMem(pINFO, sINFO);
 	CreateProcess(LAUNCHER_PATH, NULL, NULL, NULL, FALSE, NULL, NULL, NULL, &sINFO, &pINFO);
-	ProcessRunning(pINFO, sINFO, dwExit);
-
-	//	LAUNCH ESCAPE FROM TARKOV
-	AllocZeroMem(pINFO, sINFO);
-	CreateProcess(GAME_PATH, NULL, NULL, NULL, FALSE, NULL, NULL, NULL, &sINFO, &pINFO);
 	ProcessRunning(pINFO, sINFO, dwExit);
 
 	///	EXIT
